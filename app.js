@@ -25,6 +25,18 @@ const REGION_LABELS = [
 // Efficiency factor for PV system (temperature, shading, conversion losses)
 const EFFICIENCY_FACTOR = 0.8;
 
+// ── ECONOMIC CONSTANTS (Colombia 2025) ───────────────────────
+// Fuente: Superintendencia de Servicios Públicos · abril 2025
+// Promedio 11 principales distribuidoras: $937.81 COP/kWh
+const TARIFA_KWH_COP = 938;
+
+// Fuente: volting.com.co / integracionsolar.co 2025
+// Rango sistema completo (paneles + inversor + instalación): $1.000.000–$1.200.000 COP/kWp
+const COSTO_KWP_COP = 1_100_000;
+
+// Vida útil garantizada de paneles solares
+const VIDA_UTIL_ANIOS = 25;
+
 // ── APPLIANCE CATEGORIES ─────────────────────────────────────
 const APPLIANCE_CATEGORIES = [
   'Aire acondicionado', 'Bombillo LED', 'Ducha eléctrica',
@@ -280,7 +292,28 @@ function calcularViabilidad() {
     ? Math.min((generacionMensual / consumoMensual) * 100, 999)
     : 100;
 
-  // ── Display ─────────────────────────────────────────────
+  // ── Inversión & ROI ─────────────────────────────────────
+  // kWp necesarios para cubrir el consumo real del hogar
+  // kWp = Consumo mensual (kWh) / (Radiación × 30 días × Factor eficiencia)
+  const kWpNecesarios = consumoMensual / (radiacion * 30 * EFFICIENCY_FACTOR);
+
+  // Inversión inicial = kWp necesarios × costo promedio por kWp (Colombia 2025)
+  const inversionInicial = kWpNecesarios * COSTO_KWP_COP;
+
+  // Ahorro mensual = kWh generados que reemplazan red × tarifa COP/kWh
+  // Solo contamos la energía que efectivamente cubre consumo (no el excedente)
+  const kWhCubiertos  = Math.min(generacionMensual, consumoMensual);
+  const ahorroMensual = kWhCubiertos * TARIFA_KWH_COP;
+  const ahorroAnual   = ahorroMensual * 12;
+
+  // ROI en meses y años
+  const roiMeses = ahorroMensual > 0 ? inversionInicial / ahorroMensual : Infinity;
+  const roiAnios = roiMeses / 12;
+
+  // Ahorro total vida útil (25 años) descontando inversión
+  const ahorroNeto25 = (ahorroAnual * VIDA_UTIL_ANIOS) - inversionInicial;
+
+  // ── Display energía ─────────────────────────────────────
   document.getElementById('resConsumo').textContent    = consumoMensual.toFixed(1);
   document.getElementById('resGeneracion').textContent = generacionMensual.toFixed(1);
   document.getElementById('resCobertura').textContent  = coberturaPct.toFixed(1) + '%';
@@ -294,6 +327,25 @@ function calcularViabilidad() {
   if (coberturaPct >= 80)      bar.classList.add('high');
   else if (coberturaPct >= 40) bar.classList.add('medium');
   else                         bar.classList.add('low');
+
+  // ── Display económico ───────────────────────────────────
+  document.getElementById('resKwpNec').textContent      = kWpNecesarios.toFixed(2);
+  document.getElementById('resInversion').textContent   = formatCOP(inversionInicial);
+  document.getElementById('resAhorroMes').textContent   = formatCOP(ahorroMensual);
+  document.getElementById('resAhorroAnio').textContent  = formatCOP(ahorroAnual);
+  document.getElementById('resRoiMeses').textContent    = isFinite(roiMeses) ? Math.ceil(roiMeses) + ' meses' : '—';
+  document.getElementById('resRoiAnios').textContent    = isFinite(roiAnios) ? roiAnios.toFixed(1) + ' años' : '—';
+  document.getElementById('resNeto25').textContent      = formatCOP(ahorroNeto25);
+
+  // ROI bar (max reference = VIDA_UTIL_ANIOS)
+  const roiBar = document.getElementById('roiBar');
+  const roiPct = isFinite(roiAnios) ? Math.min((roiAnios / VIDA_UTIL_ANIOS) * 100, 100) : 100;
+  roiBar.style.width = '0%';
+  setTimeout(() => { roiBar.style.width = roiPct + '%'; }, 80);
+  roiBar.className = 'coverage-bar-fill';
+  if (roiAnios <= 4)      roiBar.classList.add('high');
+  else if (roiAnios <= 7) roiBar.classList.add('medium');
+  else                    roiBar.classList.add('low');
 
   // Veredicto
   const veredictoEl  = document.getElementById('resVeredicto');
@@ -318,6 +370,11 @@ function calcularViabilidad() {
 
   // Smooth scroll to results
   resultados.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ── HELPERS ───────────────────────────────────────────────────
+function formatCOP(value) {
+  return '$' + Math.round(value).toLocaleString('es-CO') + ' COP';
 }
 
 // ── INIT ─────────────────────────────────────────────────────

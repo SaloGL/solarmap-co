@@ -467,6 +467,57 @@ html, body {
 .veredicto-medio  { color: var(--text-accent) !important; }
 .veredicto-bajo   { color: #e05c5c !important; }
 
+/* ── RESULT SECTIONS ─────────────────────────────────────────── */
+.result-section-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 4px 0 2px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+
+.result-disclaimer {
+  font-size: 10px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding: 4px 2px;
+  margin-bottom: 2px;
+}
+
+.result-disclaimer strong {
+  color: var(--text-accent);
+}
+
+.result-val-sm {
+  font-size: 15px !important;
+}
+
+.result-val-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.result-roi-badge {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-accent);
+  white-space: nowrap;
+}
+
+.result-card-neto {
+  background: linear-gradient(135deg, rgba(86,197,104,0.08), var(--surface2));
+  border-color: rgba(86,197,104,0.25);
+}
+
+.result-card-neto .result-val-sm {
+  color: #56c568 !important;
+}
+
 /* ── UTILITIES ───────────────────────────────────────────── */
 .hidden { display: none !important; }
 

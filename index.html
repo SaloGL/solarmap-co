@@ -109,6 +109,9 @@
         <!-- RESULTS -->
         <div id="resultados" class="resultados hidden">
           <div class="result-title">Resultados del análisis</div>
+
+          <!-- BLOQUE 1: Energía -->
+          <div class="result-section-label">⚡ Energía</div>
           <div class="result-grid">
             <div class="result-card">
               <div class="result-val" id="resConsumo">—</div>
@@ -120,16 +123,71 @@
             </div>
             <div class="result-card result-card-wide">
               <div class="result-val" id="resCobertura">—</div>
-              <div class="result-lbl">Cobertura estimada</div>
+              <div class="result-lbl">Cobertura estimada del consumo</div>
               <div class="coverage-bar-bg">
                 <div class="coverage-bar-fill" id="coverageBar"></div>
               </div>
             </div>
-            <div class="result-card result-card-wide" id="resVeredictoCard">
-              <div class="result-val result-veredicto" id="resVeredicto">—</div>
-              <div class="result-lbl" id="resVeredictoLbl"></div>
+          </div>
+
+          <!-- BLOQUE 2: Inversión -->
+          <div class="result-section-label">💰 Inversión inicial</div>
+          <div class="result-disclaimer">
+            Basado en precios Colombia 2025: <strong>$1.100.000 COP/kWp</strong> instalado
+            (paneles + inversor + instalación). Fuente: Superintendencia de Servicios Públicos.
+          </div>
+          <div class="result-grid">
+            <div class="result-card">
+              <div class="result-val result-val-sm" id="resKwpNec">—</div>
+              <div class="result-lbl">kWp necesarios<br/><small>para cubrir tu consumo</small></div>
+            </div>
+            <div class="result-card">
+              <div class="result-val result-val-sm" id="resInversion">—</div>
+              <div class="result-lbl">Inversión estimada<br/><small>sistema completo</small></div>
             </div>
           </div>
+
+          <!-- BLOQUE 3: Retorno -->
+          <div class="result-section-label">📈 Retorno de inversión</div>
+          <div class="result-disclaimer">
+            Tarifa eléctrica referencia: <strong>$938 COP/kWh</strong> (promedio nacional residencial, abril 2025).
+          </div>
+          <div class="result-grid">
+            <div class="result-card">
+              <div class="result-val result-val-sm" id="resAhorroMes">—</div>
+              <div class="result-lbl">Ahorro mensual<br/><small>en factura eléctrica</small></div>
+            </div>
+            <div class="result-card">
+              <div class="result-val result-val-sm" id="resAhorroAnio">—</div>
+              <div class="result-lbl">Ahorro anual<br/><small>estimado</small></div>
+            </div>
+            <div class="result-card result-card-wide">
+              <div class="result-val-row">
+                <div>
+                  <div class="result-val" id="resRoiMeses">—</div>
+                  <div class="result-lbl">Tiempo de recuperación</div>
+                </div>
+                <div class="result-roi-badge" id="resRoiAnios">—</div>
+              </div>
+              <div class="coverage-bar-bg" style="margin-top:10px">
+                <div class="coverage-bar-fill" id="roiBar"></div>
+              </div>
+              <div class="result-lbl" style="margin-top:4px; font-size:9px">
+                Posición del ROI en vida útil del sistema (25 años)
+              </div>
+            </div>
+            <div class="result-card result-card-wide result-card-neto">
+              <div class="result-val result-val-sm" id="resNeto25">—</div>
+              <div class="result-lbl">Ahorro neto a 25 años<br/><small>descontando la inversión inicial</small></div>
+            </div>
+          </div>
+
+          <!-- BLOQUE 4: Veredicto -->
+          <div class="result-card result-card-wide" id="resVeredictoCard">
+            <div class="result-val result-veredicto" id="resVeredicto">—</div>
+            <div class="result-lbl" id="resVeredictoLbl"></div>
+          </div>
+
         </div>
 
       </div><!-- end calc-scroll -->
