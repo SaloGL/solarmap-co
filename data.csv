@@ -1,0 +1,84 @@
+Departamento,Municipio,Region,Latitud,Longitud,Radiacion_kWh_m2_dia
+La Guajira,Riohacha,Caribe,11.5444,-72.9072,6.23
+La Guajira,Uribia,Caribe,11.7142,-72.2741,6.41
+La Guajira,Maicao,Caribe,11.3834,-72.245,6.35
+La Guajira,Manaure,Caribe,11.78,-72.4485,6.38
+La Guajira,San Juan del Cesar,Caribe,10.7697,-73.0072,5.82
+Cesar,Valledupar,Caribe,10.4772,-73.2536,5.76
+Cesar,Aguachica,Caribe,8.3078,-73.6199,5.21
+Cesar,La Paz,Caribe,10.3967,-73.1714,5.68
+Magdalena,Santa Marta,Caribe,11.2408,-74.2016,5.68
+Magdalena,Ciénaga,Caribe,11.0059,-74.2501,5.55
+Magdalena,Fundación,Caribe,10.5246,-74.1869,5.42
+Atlántico,Barranquilla,Caribe,10.9685,-74.7813,5.54
+Atlántico,Soledad,Caribe,10.9182,-74.767,5.52
+Atlántico,Malambo,Caribe,10.8672,-74.7683,5.49
+Bolívar,Cartagena,Caribe,10.391,-75.4794,5.38
+Bolívar,Magangué,Caribe,9.2411,-74.7548,5.12
+Bolívar,El Carmen de Bolívar,Caribe,9.7169,-75.1204,5.05
+Sucre,Sincelejo,Caribe,9.3047,-75.3978,5.31
+Sucre,Corozal,Caribe,9.3222,-75.2918,5.27
+Córdoba,Montería,Caribe,8.7575,-75.8827,5.18
+Córdoba,Cereté,Caribe,8.8834,-75.7931,5.14
+Córdoba,Lorica,Caribe,9.2405,-75.8136,5.08
+San Andrés y Providencia,San Andrés,Caribe,12.5847,-81.7006,5.62
+Cundinamarca,Bogotá D.C.,Andina,4.711,-74.0721,4.03
+Cundinamarca,Soacha,Andina,4.5793,-74.2148,4.05
+Cundinamarca,Fusagasugá,Andina,4.3438,-74.3637,4.18
+Cundinamarca,Girardot,Andina,4.3031,-74.803,4.72
+Cundinamarca,Zipaquirá,Andina,5.0215,-74.0071,3.98
+Antioquia,Medellín,Andina,6.2442,-75.5812,4.62
+Antioquia,Bello,Andina,6.3297,-75.5576,4.58
+Antioquia,Itagüí,Andina,6.1847,-75.599,4.6
+Antioquia,Envigado,Andina,6.1627,-75.5883,4.58
+Antioquia,Apartadó,Andina,7.8836,-76.6295,4.1
+Antioquia,Turbo,Andina,8.0975,-76.7314,4.22
+Valle del Cauca,Cali,Andina,3.4516,-76.532,4.54
+Valle del Cauca,Buenaventura,Andina,3.8833,-77.0311,3.45
+Valle del Cauca,Palmira,Andina,3.5194,-76.3031,4.68
+Valle del Cauca,Tulua,Andina,4.0843,-76.1895,4.55
+Valle del Cauca,Bucaramanga (Valle),Andina,3.895,-76.2887,4.61
+Santander,Bucaramanga,Andina,7.1254,-73.1198,4.81
+Santander,Barrancabermeja,Andina,7.0639,-73.8553,5.09
+Santander,Floridablanca,Andina,7.0648,-73.0923,4.79
+Santander,Girón,Andina,7.0748,-73.1701,4.83
+Norte de Santander,Cúcuta,Andina,7.8939,-72.5078,5.12
+Norte de Santander,Ocaña,Andina,8.2364,-73.3543,4.92
+Boyacá,Tunja,Andina,5.5353,-73.3678,3.94
+Boyacá,Duitama,Andina,5.8271,-73.0269,3.88
+Boyacá,Sogamoso,Andina,5.7185,-72.933,3.91
+Caldas,Manizales,Andina,5.0689,-75.5174,4.14
+Caldas,La Dorada,Andina,5.4508,-74.6633,4.88
+Quindío,Armenia,Andina,4.5339,-75.6811,4.42
+Risaralda,Pereira,Andina,4.8143,-75.6946,4.38
+Risaralda,Dosquebradas,Andina,4.8389,-75.6678,4.35
+Tolima,Ibagué,Andina,4.4389,-75.2322,4.69
+Tolima,Espinal,Andina,4.1503,-74.8851,5.04
+Tolima,Honda,Andina,5.2094,-74.7395,4.92
+Huila,Neiva,Andina,2.9273,-75.2819,5.18
+Huila,Pitalito,Andina,1.8685,-76.0512,4.72
+Huila,Garzón,Andina,2.198,-75.6263,4.97
+Nariño,Pasto,Andina,1.2136,-77.2811,3.86
+Nariño,Tumaco,Andina,1.809,-78.7831,3.62
+Nariño,Ipiales,Andina,0.8284,-77.644,3.74
+Cauca,Popayán,Andina,2.4448,-76.6147,3.95
+Cauca,Santander de Quilichao,Andina,3.0063,-76.483,4.21
+Meta,Villavicencio,Orinoquía,4.142,-73.6266,4.85
+Meta,Acacías,Orinoquía,3.9894,-73.7631,4.8
+Meta,Granada,Orinoquía,3.5382,-73.7128,4.82
+Casanare,Yopal,Orinoquía,5.3378,-72.3964,5.04
+Casanare,Aguazul,Orinoquía,5.1752,-72.5486,4.97
+Arauca,Arauca,Orinoquía,7.0902,-70.7617,5.35
+Arauca,Saravena,Orinoquía,6.9626,-71.8751,5.21
+Vichada,Puerto Carreño,Orinoquía,6.1892,-67.4854,5.52
+Guainía,Inírida,Orinoquía,3.8653,-67.9239,4.93
+Putumayo,Mocoa,Amazonía,1.1478,-76.6501,3.72
+Putumayo,Puerto Asís,Amazonía,0.5142,-76.5008,3.88
+Amazonas,Leticia,Amazonía,-4.2153,-69.9404,4.45
+Caquetá,Florencia,Amazonía,1.6143,-75.6065,4.02
+Caquetá,San Vicente del Caguán,Amazonía,2.1111,-74.7671,4.28
+Guaviare,San José del Guaviare,Amazonía,2.5644,-72.6434,4.52
+Vaupés,Mitú,Amazonía,1.2536,-70.2332,4.38
+Chocó,Quibdó,Pacífica,5.694,-76.6552,3.12
+Chocó,Istmina,Pacífica,5.1633,-76.6866,3.08
+Chocó,Condoto,Pacífica,5.0974,-76.6531,3.05

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Solar — Colombia</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-logo">
+      <span class="logo-icon">☀</span>
+      <span class="logo-text">SolarMap <span class="logo-co">CO</span></span>
+    </div>
+    <p class="header-sub">Herramienta de viabilidad fotovoltaica · Colombia</p>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <main class="dashboard">
+
+    <!-- LEFT: MAP -->
+    <section class="panel panel-map">
+      <div class="panel-label">Radiación Solar · Colombia</div>
+      <div id="map"></div>
+
+      <!-- LEGEND -->
+      <div class="legend">
+        <div class="legend-title">Regiones</div>
+        <div class="legend-items" id="legendItems"></div>
+      </div>
+    </section>
+
+    <!-- RIGHT: CALCULATOR -->
+    <section class="panel panel-calc">
+      <div class="panel-label">Calculadora de Viabilidad</div>
+
+      <div class="calc-scroll">
+
+        <!-- STEP 1: Solar radiation -->
+        <div class="form-group">
+          <label class="form-label">
+            <span class="step-num">01</span>
+            Radiación solar promedio
+            <span class="form-hint">(kWh/m²/día · obtenida del mapa)</span>
+          </label>
+          <input type="number" id="radiacion" class="form-input" placeholder="Ej: 5.5" min="0" max="10" step="0.01" />
+        </div>
+
+        <!-- STEP 2: System power -->
+        <div class="form-group">
+          <label class="form-label">
+            <span class="step-num">02</span>
+            Potencia instalada del sistema (kWp)
+            <span class="form-hint">(paneles solares a instalar)</span>
+          </label>
+          <input type="number" id="potenciaInstalada" class="form-input" placeholder="Ej: 2.5" min="0.1" step="0.1" />
+        </div>
+
+        <!-- STEP 3: Appliance count -->
+        <div class="form-group">
+          <label class="form-label">
+            <span class="step-num">03</span>
+            Número de electrodomésticos
+          </label>
+          <select id="numElectro" class="form-select">
+            <option value="">— Seleccionar —</option>
+            <option value="1">1</option><option value="2">2</option>
+            <option value="3">3</option><option value="4">4</option>
+            <option value="5">5</option><option value="6">6</option>
+            <option value="7">7</option><option value="8">8</option>
+            <option value="9">9</option><option value="10">10</option>
+            <option value="11">11</option><option value="12">12</option>
+            <option value="13">13</option><option value="14">14</option>
+            <option value="15">15</option>
+          </select>
+        </div>
+
+        <!-- STEP 4: Appliance table -->
+        <div id="electrosContainer" class="electros-container hidden">
+          <div class="form-label">
+            <span class="step-num">04</span>
+            Detalle de electrodomésticos
+          </div>
+
+          <div class="electros-header">
+            <span>Categoría</span>
+            <span>Cantidad</span>
+            <span>Potencia (W)</span>
+            <span>Horas/día</span>
+          </div>
+          <div id="electrosRows"></div>
+        </div>
+
+        <!-- ACTION BUTTON -->
+        <button id="btnCalc" class="btn-calc hidden">
+          <span>Calcular viabilidad</span>
+          <span class="btn-arrow">→</span>
+        </button>
+
+        <!-- RESULTS -->
+        <div id="resultados" class="resultados hidden">
+          <div class="result-title">Resultados del análisis</div>
+          <div class="result-grid">
+            <div class="result-card">
+              <div class="result-val" id="resConsumo">—</div>
+              <div class="result-lbl">Consumo mensual<br/><small>kWh/mes</small></div>
+            </div>
+            <div class="result-card">
+              <div class="result-val" id="resGeneracion">—</div>
+              <div class="result-lbl">Generación mensual<br/><small>kWh/mes</small></div>
+            </div>
+            <div class="result-card result-card-wide">
+              <div class="result-val" id="resCobertura">—</div>
+              <div class="result-lbl">Cobertura estimada</div>
+              <div class="coverage-bar-bg">
+                <div class="coverage-bar-fill" id="coverageBar"></div>
+              </div>
+            </div>
+            <div class="result-card result-card-wide" id="resVeredictoCard">
+              <div class="result-val result-veredicto" id="resVeredicto">—</div>
+              <div class="result-lbl" id="resVeredictoLbl"></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end calc-scroll -->
+    </section>
+  </main>
+
+  <!-- POPUP TOOLTIP for map -->
+  <div id="mapTooltip" class="map-tooltip hidden"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- PapaParse for CSV -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <!-- App JS -->
+  <script src="app.js"></script>
+</body>
+</html>
